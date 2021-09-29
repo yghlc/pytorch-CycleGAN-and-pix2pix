@@ -1,11 +1,15 @@
 #!/bin/bash
 
-# https://colab.research.google.com/github/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/CycleGAN.ipynb
-# training after donwload data and pre-train models
+# test: rgb to nirGB
+
+gan=~/codes/PycharmProjects/yghlc_pytorch-CycleGAN-and-pix2pix
+
+#python ${gan}/train.py --gpu_ids 2 --display_env rgb2nir  --dataroot ./datasets/WR  --name rgb2nirGB --model cycle_gan 
 
 
-python train.py --help > train_help.txt
+# test both sides
+#python ${gan}/test.py --gpu_ids 2 --dataroot ./datasets/WR --name rgb2nirGB --model cycle_gan
 
-python train.py --dataroot ./datasets/maps  --name sat2map --model cycle_gan 
 
-#python test.py --dataroot ./datasets/maps --name sat2map --model cycle_gan
+# test one side
+python ${gan}/test.py --gpu_ids 2 --dataroot ./datasets/WR/testA --name rgb2nirGB --model_suffix _A  --model test --no_dropout
